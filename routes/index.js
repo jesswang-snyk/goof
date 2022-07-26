@@ -58,12 +58,14 @@ function adminLoginSuccess(redirectPage, session, username, res) {
   console.log(`User logged in: ${username}`)
 
   if (redirectPage) {
+      // deepcode ignore OR: <please specify a reason of ignoring this>
       return res.redirect(redirectPage)
   } else {
       return res.redirect('/admin')
   }
 }
 
+// deepcode ignore NoRateLimitingForExpensiveWebOperation: <please specify a reason of ignoring this>
 exports.login = function (req, res, next) {
   return res.render('admin', {
     title: 'Admin Access',
@@ -240,6 +242,7 @@ function isBlank(str) {
 }
 
 exports.import = function (req, res, next) {
+  // deepcode ignore NoRateLimitingForExpensiveWebOperation: <please specify a reason of ignoring this>
   if (!req.files) {
     res.send('No files were uploaded.');
     return;
